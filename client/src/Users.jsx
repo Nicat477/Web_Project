@@ -2,14 +2,18 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Logout from "./Logout";
+
 function Users() {
   const [users, setUsers] = useState([]);
+  
   useEffect(() => {
     axios
       .get("http://localhost:3001")
       .then((result) => setUsers(result.data))
       .catch((err) => console.log(err));
   }, []);
+  
   const handleDelete = (id) => {
     axios
       .delete("http://localhost:3001/deleteUser/" + id)
@@ -25,9 +29,12 @@ function Users() {
       <h1>Book Management System</h1>
       <div className="content-container">
         <div className="bg-white p-3 rounded w-75">
-          <Link to="/create" className="btn btn-success mb-3">
-            Create Book
-          </Link>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <Link to="/create" className="btn btn-success">
+              Create Book
+            </Link>
+            <Logout />
+          </div>
           
           <table className="table">
             <thead>
@@ -56,7 +63,7 @@ function Users() {
                     <td>
                       <Link
                         to={`/update/${user._id}`}
-                        className="btn btn-success button"
+                        className="btn btn-success me-2"
                       >
                         Update
                       </Link>
@@ -77,4 +84,5 @@ function Users() {
     </div>
   );
 }
+
 export default Users;

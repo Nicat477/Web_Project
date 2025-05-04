@@ -66,6 +66,13 @@ h2 {
     transition: all 0.3s ease;
 }
 
+/* Logout Button Style */
+.btn-logout {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+
 .btn-success {
     background-color: #2ecc71;
     border: none;
@@ -193,8 +200,3 @@ label {
 }
 
 /* Main Content Container */
-.d-flex {
-    position: relative;
-    min-height: 100vh;
-    padding-top: 6rem;
-}
